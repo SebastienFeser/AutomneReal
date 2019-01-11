@@ -51,6 +51,9 @@ TagManager:
   - name: Props
     uniqueID: 3094138267
     locked: 0
+  - name: Bushes
+    uniqueID: 3806438247
+    locked: 0
   - name: DayNight
     uniqueID: 3786596889
     locked: 0
