@@ -3781,6 +3781,7 @@ GameObject:
   - component: {fileID: 1000354765}
   - component: {fileID: 1000354767}
   - component: {fileID: 1000354768}
+  - component: {fileID: 1000354769}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3856,6 +3857,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1000354769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000354764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73d490ea255df3741bafb68a4fabacca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1007368227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4628,9 +4641,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 417151163
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 495e569df23d6924f90338bed4110928, type: 3}
-  m_Color: {r: 1, g: 0.58071744, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

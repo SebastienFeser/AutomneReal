@@ -8,7 +8,7 @@ public class MapChangerTrig : MonoBehaviour
     [SerializeField] GameObject player;
     float TileSizeX = 18f;
     float TileSizeY = 10f;
-    [SerializeField] float waitForSeconds;
+    float waitForSeconds = 0.005f;
     float playerMoveX = 0.165f;
     float playerMoveY = 0.155f;
 
@@ -25,7 +25,7 @@ public class MapChangerTrig : MonoBehaviour
     [SerializeField] TriggerPosition triggerPosition;
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "PlayerCheck")
         {
