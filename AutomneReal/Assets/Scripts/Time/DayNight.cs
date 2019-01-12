@@ -16,11 +16,6 @@ public class DayNight : MonoBehaviour
         StartCoroutine("SunUp");
     }
 
-    private void Update()
-    {
-        Debug.Log(dayNightMinutes);
-    }
-
     IEnumerator SunUp()
     {
         while (dayNightMinutes > -360)

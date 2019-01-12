@@ -11,7 +11,16 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField] AudioSource audioSource2;
     [SerializeField] AudioClip footstep1;
     [SerializeField] AudioClip footstep2;
+    [SerializeField] GameObject HaxeHitbox;
+    GameObject haxeHitboxIn;
+    Vector3 haxeHitboxAngle;
+    bool canHaxe = true;
+    bool canFootsteps = false;
     public bool mapMoving = false;
+
+    float maximumPitch = 0.5f;
+    float minimumPitch = -0.5f;
+    float pitch;
     enum PlayerLooking
     {
         UP,
@@ -30,12 +39,17 @@ public class PlayerMovements : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(mapMoving);
         if (!mapMoving)
         {
             playerRigidbody2D.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * movementSpeed, Input.GetAxisRaw("Vertical") * movementSpeed);
             if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
             {
+                /*if (!canFootsteps)
+                {
+                    canFootsteps = true;
+                    StartCoroutine("footsteps");
+                }
+                */
                 if (Input.GetAxisRaw("Horizontal") > 0)
                     playerLooking = PlayerLooking.RIGHT;
 
@@ -64,21 +78,67 @@ public class PlayerMovements : MonoBehaviour
                         break;
                 }
             }
+            /*
+            else if (canFootsteps)
+            {
+
+                canFootsteps = false;
+            }*/
         }
         else
         {
             playerRigidbody2D.velocity = new Vector2(0, 0);
         }
 
+        if (Input.GetButton("Haxe") && canHaxe)
+        {
+            canHaxe = false;
+            switch (playerLooking)
+            {
+                case PlayerLooking.DOWN:
+                    haxeHitboxAngle = new Vector3(0, 0, 180);
+                    break;
+                case PlayerLooking.LEFT:
+                    haxeHitboxAngle = new Vector3(0, 0, 90);
+                    break;
+                case PlayerLooking.UP:
+                    haxeHitboxAngle = new Vector3(0, 0, 0);
+                    break;
+                case PlayerLooking.RIGHT:
+                    haxeHitboxAngle = new Vector3(0, 0, 270);
+                    break;
+
+            }
+            haxeHitboxIn = Instantiate(HaxeHitbox, gameObject.transform.localPosition, Quaternion.Euler(haxeHitboxAngle));
+            haxeHitboxIn.transform.parent = gameObject.transform;
+            StartCoroutine("haxe");
+        }
+
+    }
+    IEnumerator haxe()
+    {
+        yield return new WaitForSeconds(0.05f);
+        Destroy(haxeHitboxIn);
+        yield return new WaitForSeconds(0.95f);
+        canHaxe = true;
     }
 
     IEnumerator footsteps()
     {
-
-        audioSource1.clip = footstep1;
-        yield return new WaitForSeconds(0.5f);
-        audioSource2.clip = footstep2;
-        yield return new WaitForSeconds(0.5f);
+        while (canFootsteps)
+        {
+            Debug.Log("test");
+            pitch = Random.Range(minimumPitch, maximumPitch);
+            audioSource1.clip = footstep1;
+            audioSource1.pitch = pitch;
+            audioSource1.Play();
+            yield return new WaitForSeconds(0.2f);
+            pitch = Random.Range(minimumPitch, maximumPitch);
+            audioSource2.clip = footstep1;
+            audioSource1.pitch = pitch;
+            audioSource2.Play();
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 
 }
