@@ -126,7 +126,8 @@ public class MapChangerTrig : MonoBehaviour
             map.transform.position = new Vector2(startPosition.x - i, startPosition.y);
             yield return new WaitForSeconds(waitForSeconds);
         }
-        player.GetComponent<PlayerMovements>().mapMoving = false;
+        player.GetComponent<PlayerMovements>
+            ().mapMoving = false;
         map.transform.position = endPosition;
     }
 }
