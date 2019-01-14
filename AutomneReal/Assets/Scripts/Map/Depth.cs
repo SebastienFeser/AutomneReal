@@ -19,6 +19,7 @@ public class Depth : MonoBehaviour
         if (tempRend != null)
         {
             tempRend.sortingOrder = (int)Camera.main.WorldToScreenPoint(position.transform.position).y * -1;
+
         }
     }
 }

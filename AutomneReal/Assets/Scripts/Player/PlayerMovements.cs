@@ -12,6 +12,8 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField] AudioClip footstep1;
     [SerializeField] AudioClip footstep2;
     [SerializeField] GameObject HaxeHitbox;
+    [SerializeField] Inventory inventory;
+
     GameObject haxeHitboxIn;
     Vector3 haxeHitboxAngle;
     bool canHaxe = true;
@@ -141,4 +143,18 @@ public class PlayerMovements : MonoBehaviour
         }
     }
 
+    public void IncreaseWood()
+    {
+        inventory.wood += 1;
+    }
+
+    public void IncreaseMushrooms()
+    {
+        inventory.mushrooms += 1;
+    }
+
+    public void  IncreaseTears()
+    {
+        inventory.tears += 1;
+    }
 }

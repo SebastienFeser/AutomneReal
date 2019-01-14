@@ -10,6 +10,9 @@ public class Tree : MonoBehaviour
     [SerializeField] AudioSource treeAudioSource2;
     [SerializeField] AudioClip treeHit;
     [SerializeField] AudioClip treeFalling;
+    [SerializeField] GameObject wood;
+    [SerializeField] Collider2D treeCollider;
+    [SerializeField] Transform tree;
     bool canHit = true;
     int hitCount = 0;
     // Start is called before the first frame update
@@ -58,6 +61,7 @@ public class Tree : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
         yield return new WaitForSeconds(0.2f);
+        Instantiate(wood, new Vector2(treeCollider.transform.position.x - 1, treeCollider.transform.position.y), Quaternion.identity, tree);
         for (int i = 0; i < treeSpriteRenderer.Length; i++)
         {
             Destroy(treeSpriteRenderer[i]);

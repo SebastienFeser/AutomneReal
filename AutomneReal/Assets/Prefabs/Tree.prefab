@@ -292,6 +292,9 @@ MonoBehaviour:
   treeAudioSource2: {fileID: 3343795159920235779}
   treeHit: {fileID: 8300000, guid: 4f74f4e578593e34e9e15d0f65d6c447, type: 3}
   treeFalling: {fileID: 8300000, guid: 795fb566bdb71894db4688f6386450b5, type: 3}
+  wood: {fileID: 4098386573507377364, guid: c80945827f63fe84b94c705fae1c9221, type: 3}
+  treeCollider: {fileID: 9075994493836812712}
+  tree: {fileID: 2029616443144280641}
 --- !u!82 &8774242793625530001
 AudioSource:
   m_ObjectHideFlags: 0
