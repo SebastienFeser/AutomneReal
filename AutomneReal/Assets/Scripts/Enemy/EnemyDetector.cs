@@ -11,6 +11,10 @@ public class EnemyDetector : MonoBehaviour
     [SerializeField] Animation enemyAnimation;
     [SerializeField] Animator animationNormal;
     [SerializeField] Animator running;
+    [SerializeField] GameObject Tears;
+
+    GameObject map;
+
     PlayerMovements playerMovements;
     float xDistance;
     float yDistance;
@@ -26,6 +30,7 @@ public class EnemyDetector : MonoBehaviour
 
     private void Start()
     {
+        map = GameObject.FindGameObjectWithTag("Map");
     }
 
     private void Update()
@@ -93,11 +98,12 @@ public class EnemyDetector : MonoBehaviour
     {
         count += 1;
         normalMove = false;
-        enemyRigidBody.velocity = new Vector2(-xSpeed/2, -ySpeed/2);
+        enemyRigidBody.velocity = new Vector2(-xSpeed, -ySpeed);
         yield return new WaitForSeconds(0.3f);
         normalMove = true;
         if (count >= 3)
         {
+            Instantiate(Tears, new Vector2(enemy.transform.position.x, enemy.transform.position.y), Quaternion.identity, map.transform);
             Destroy(enemy);
         }
 

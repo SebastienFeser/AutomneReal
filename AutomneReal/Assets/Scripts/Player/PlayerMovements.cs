@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovements : MonoBehaviour
 {
@@ -13,12 +14,22 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField] AudioClip footstep2;
     [SerializeField] GameObject HaxeHitbox;
     [SerializeField] Inventory inventory;
+    [SerializeField] SpriteRenderer redSquareHit;
+
+    [SerializeField] SpriteRenderer playerSpriteRenderer;
+    [SerializeField] Sprite LookingDown;
+    [SerializeField] Sprite LookingUp;
+    [SerializeField] Sprite LookingLeft;
+    [SerializeField] Sprite LookingRight;
+
+    Color actualColor;
+    bool canTakeDamages = true;
 
     GameObject haxeHitboxIn;
     Vector3 haxeHitboxAngle;
     bool canHaxe = true;
     bool canFootsteps = false;
-    public bool mapMoving = false;
+    [HideInInspector] public bool mapMoving = false;
 
     float maximumPitch = 0.5f;
     float minimumPitch = -0.5f;
@@ -67,16 +78,16 @@ public class PlayerMovements : MonoBehaviour
                 switch (playerLooking)
                 {
                     case PlayerLooking.DOWN:
-                        playerSprite.transform.eulerAngles = new Vector3(0, 0, 180);
+                        playerSpriteRenderer.sprite = LookingDown;
                         break;
                     case PlayerLooking.LEFT:
-                        playerSprite.transform.eulerAngles = new Vector3(0, 0, 90);
+                        playerSpriteRenderer.sprite = LookingLeft;
                         break;
                     case PlayerLooking.UP:
-                        playerSprite.transform.eulerAngles = new Vector3(0, 0, 0);
+                        playerSpriteRenderer.sprite = LookingUp;
                         break;
                     case PlayerLooking.RIGHT:
-                        playerSprite.transform.eulerAngles = new Vector3(0, 0, 270);
+                        playerSpriteRenderer.sprite = LookingRight;
                         break;
                 }
             }
@@ -117,6 +128,49 @@ public class PlayerMovements : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "LittleEnemy" && canTakeDamages)
+        {
+            Debug.Log("lol");
+            StartCoroutine("takeLittleDamage");
+        }
+    }
+
+    IEnumerator takeLittleDamage()
+    {
+        
+            actualColor = redSquareHit.color;
+            redSquareHit.color = new Color(actualColor.r, actualColor.g, actualColor.b, (actualColor.a * 255 + 50f) / 255f);
+            canTakeDamages = false;
+            yield return new WaitForSeconds(3f);
+            canTakeDamages = true;
+            yield return new WaitForSeconds(2f);
+            for (int i=1; redSquareHit.color.a > 0; i++)
+            {
+                if (canTakeDamages && redSquareHit.color.a *255 < 200)
+                {
+                    redSquareHit.color = new Color(redSquareHit.color.r, redSquareHit.color.g, redSquareHit.color.b, redSquareHit.color.a - 1 / 255f);
+                    yield return new WaitForSeconds(0.1f);
+                }
+                else if (!canTakeDamages && redSquareHit.color.a * 255 < 200)
+                {
+                yield return null;
+            }
+                else
+                {
+                    SceneManager.LoadScene("Menu");
+                yield return null;
+            }
+            
+
+        }
+        yield return null;
+
+    }
+        
+    
     IEnumerator haxe()
     {
         yield return new WaitForSeconds(0.05f);

@@ -8,6 +8,8 @@ TagManager:
   - HaxeHit
   - Tree
   - Enemy
+  - LittleEnemy
+  - RedBox
   layers:
   - Default
   - TransparentFX
@@ -59,4 +61,7 @@ TagManager:
     locked: 0
   - name: DayNight
     uniqueID: 3786596889
+    locked: 0
+  - name: RedHitbox
+    uniqueID: 2900205195
     locked: 0

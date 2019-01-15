@@ -106,6 +106,8 @@ MonoBehaviour:
   footstep2: {fileID: 8300000, guid: c762fdb9ddd616d44907a8243940cfdb, type: 3}
   HaxeHitbox: {fileID: 4897888164430509301, guid: c808cd25999b17040a86f10506a4a9a0,
     type: 3}
+  inventory: {fileID: 0}
+  redSquareHit: {fileID: 0}
   mapMoving: 0
 --- !u!50 &7035260876868479880
 Rigidbody2D:
@@ -359,6 +361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7035260877867129618}
   - component: {fileID: 7035260877867129617}
+  - component: {fileID: 4415971985233270164}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -428,3 +431,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4415971985233270164
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7035260877867129616}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

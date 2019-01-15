@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6733348391844365386}
   m_Layer: 0
   m_Name: EnemyHitbox
-  m_TagString: Untagged
+  m_TagString: LittleEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +47,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.55
+  m_Radius: 0.5
 --- !u!114 &6733348391844365386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 6733348393002050432}
   m_Layer: 0
   m_Name: Enemy1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -245,7 +245,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.05
 --- !u!1 &6733348393159834957
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,3 +314,4 @@ MonoBehaviour:
   animationNormal: {fileID: 4337783737530029486, guid: 2916d808b6932914eadebd52cb50fe04,
     type: 3}
   running: {fileID: 1003892819082304688, guid: 870441499f14239459cbf3ad5e8dd4c9, type: 3}
+  Tears: {fileID: 446498774896750199, guid: 39ec011a841fe834995bc60a47cb38e8, type: 3}
